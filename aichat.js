@@ -26,7 +26,7 @@ const msg=document.getElementById("userMsg").value;
 
 addMsg(msg,true);
 
-const res=await fetch("/api.php",{
+const res=await fetch("https://shy-snowflake-0ef8.haba12171217.workers.dev/",{
 method:"POST",
 body:msg
 });
@@ -43,4 +43,5 @@ div.style.background=user?"#ffd6ea":"#f1f1f1";
 div.style.padding="8px";
 div.style.borderRadius="8px";
 document.getElementById("aiMessages").appendChild(div);
+
 }

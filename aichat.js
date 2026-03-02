@@ -4,7 +4,7 @@ document.body.insertAdjacentHTML("beforeend", `
 </div>
 
 <div id="aiChatBox" style="display:none;position:fixed;bottom:80px;right:20px;width:320px;height:420px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.25);flex-direction:column;overflow:hidden;z-index:9999;">
-<div style="background:#ff4fa3;color:#fff;padding:12px;">AIスタッフサポート</div>
+<div style="background:#ff4fa3;color:#fff;padding:12px;">AIスタッフ あい<</div>
 <div id="aiMessages" style="flex:1;padding:10px;overflow:auto;"></div>
 
 <div style="display:flex">
@@ -73,3 +73,4 @@ function addMsg(text, user) {
   div.style.borderRadius = "8px";
   document.getElementById("aiMessages").appendChild(div);
 }
+

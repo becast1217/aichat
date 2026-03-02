@@ -30,16 +30,28 @@ if(!msg) return;
 addMsg(msg,true);
 document.getElementById("userMsg").value="";
 
+try{
+
 const res = await fetch(
 "https://shy-snowflake-0ef8.haba12171217.workers.dev/",
 {
 method:"POST",
-headers:{ "Content-Type":"application/json" },
-body:JSON.stringify({ message:msg })
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:msg
+})
 });
 
 const data = await res.json();
 addMsg(data.reply,false);
+
+}catch(err){
+addMsg("通信エラーが発生しました",false);
+console.error(err);
+}
+
 });
 
 function addMsg(text,user){
@@ -51,3 +63,4 @@ div.style.padding="8px";
 div.style.borderRadius="8px";
 document.getElementById("aiMessages").appendChild(div);
 }
+

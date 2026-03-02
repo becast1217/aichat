@@ -1,3 +1,5 @@
+<script>
+
 document.body.insertAdjacentHTML("beforeend",`
 <div id="aiChatBtn">💬 ご相談はこちら</div>
 
@@ -24,7 +26,7 @@ BeCastサポートAI
 
 <div style="display:flex">
 <input id="userMsg" style="flex:1;border:none;padding:10px;">
-<button onclick="sendMsg()">送信</button>
+<button id="sendBtn">送信</button>
 </div>
 
 </div>
@@ -38,10 +40,8 @@ btn.onclick=()=>{
   box.style.display==="flex" ? "none" : "flex";
 };
 
+document.getElementById("sendBtn").onclick = sendMsg;
 
-/* =========================
-   ここがAI通信（重要）
-========================= */
 async function sendMsg(){
 
 const input=document.getElementById("userMsg");
@@ -66,18 +66,14 @@ message:msg
 
 const data = await res.json();
 
-addMsg(data.reply || "返答を取得できませんでした",false);
+addMsg(data.reply || "返答取得失敗",false);
 
 }catch(e){
-addMsg("サーバーに接続できませんでした",false);
+addMsg("通信エラーが発生しました",false);
 }
 
 }
 
-
-/* =========================
-   メッセージ表示
-========================= */
 function addMsg(text,user){
 
 const div=document.createElement("div");
@@ -91,3 +87,5 @@ div.style.borderRadius="8px";
 document.getElementById("aiMessages").appendChild(div);
 
 }
+
+</script>

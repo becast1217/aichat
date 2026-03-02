@@ -10,7 +10,27 @@ BeCastサポートAI
 
 <div style="display:flex">
 <input id="userMsg" style="flex:1">
-<button onclick="sendMsg()">送信</button>
+<button onclick="async function sendMsg(){
+
+const msg=document.getElementById("userMsg").value;
+
+addMsg(msg,true);
+
+const res = await fetch(
+"https://shy-snowflake-0ef8.haba12171217.workers.dev/",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:msg
+})
+});
+
+const data = await res.json();
+addMsg(data.reply,false);
+
+}">送信</button>
 </div>
 </div>
 `);
@@ -45,3 +65,4 @@ div.style.borderRadius="8px";
 document.getElementById("aiMessages").appendChild(div);
 
 }
+
